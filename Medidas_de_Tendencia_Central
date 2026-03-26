@@ -1,0 +1,44 @@
+from statistics import mean, median, multimode
+
+tempos = [112, 108, 115, 120, 118, 112, 109, 118, 125, 118,
+          110, 112, 130, 118, 115, 109, 118, 115, 112, 118]
+
+media = mean(tempos)
+mediana = median(tempos)
+moda = multimode(tempos)
+
+maior = max(tempos)
+menor = min(tempos)
+amplitude = maior - menor
+
+print("Tempos de resposta:", tempos)
+print("Média:", media, "ms")
+print("Mediana:", mediana, "ms")
+print("Moda:", moda, "ms")
+print("Maior valor:", maior, "ms")
+print("Menor valor:", menor, "ms")
+print("Amplitude:", amplitude, "ms")
+
+print("\nAnálise dos resultados:")
+
+if abs(media - mediana) < 5:
+    print("- A média e a mediana são muito próximas, indicando que os dados estão concentrados em torno de um valor típico.")
+else:
+    print("- A média e a mediana estão mais distantes, o que sugere maior dispersão nos dados.")
+
+if amplitude <= 25:
+    print("- A amplitude dos dados não é muito alta, o que mostra que não há grande variação nos tempos de resposta.")
+else:
+    print("- A amplitude é elevada, indicando variação considerável nos tempos de resposta.")
+
+print("- A moda indica o valor que mais se repetiu nos tempos de resposta.")
+
+if abs(media - mediana) <= 3:
+    print("- A média é um bom indicador do comportamento geral do servidor, pois está próxima da mediana.")
+else:
+    print("- A média pode não representar tão bem os dados, sendo mais seguro observar a mediana e a moda.")
+
+if maior >= 125:
+    print("- Apesar da relativa estabilidade, existem picos de lentidão que merecem atenção e monitoramento.")
+else:
+    print("- Os dados sugerem que o servidor está operando de forma estável, sem picos relevantes de lentidão.")
